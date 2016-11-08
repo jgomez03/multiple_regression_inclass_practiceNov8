@@ -1,0 +1,26 @@
+---
+title: "Mul_reg_markdown"
+author: "Jennifer Gomez"
+date: "November 8, 2016"
+output: pdf_document
+---
+# my first heading
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+my.data <- read_csv("regLectureData.csv")
+
+my.reg <-lm(VidScore ~ age + iq, data=my.data)
+
+library(apaTables)
+x <- apa.reg.table(my.reg, filename="TITLE.doc", table.number = 1)
+
+psych::pairs.panels(my.data)
+
+my_graph <- qplot(iq,age,data=my.data)
+print(my_graph)
+
+
+iq_mean <- mean(my.data$iq)
+```
+The mean iq in my sample was *M* = `r iq_mean` #SYMBOL UNDER TILDA
+#'____' means you can run an r command in the middle of the sentence 
